@@ -2,12 +2,12 @@
  表tag_groups
  是Tag的一级分类目录
 */
-CREATE TABLE tag_groups (
-                id_index INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT,
-                color TEXT,
-                create_time INTEGER
-            );
+-- CREATE TABLE tag_groups (
+--                 id_index INTEGER PRIMARY KEY AUTOINCREMENT,
+--                 name TEXT,
+--                 color TEXT,
+--                 create_time INTEGER
+--             );
 INSERT INTO tag_groups VALUES ('1', '人物', 'rgba(255, 123, 2, .4)', '1736580436');
 INSERT INTO tag_groups VALUES ('2', '服饰', 'rgba(255, 123, 2, .4)', '1736580438');
 INSERT INTO tag_groups VALUES ('3', '表情动作', 'rgba(255, 123, 2, .4)', '1736580442');
@@ -20,10 +20,6 @@ INSERT INTO tag_groups VALUES ('9', '汉服', 'rgba(255, 123, 2, .4)', '17365804
 INSERT INTO tag_groups VALUES ('10', '魔法系', 'rgba(255, 123, 2, .4)', '1736580449');
 INSERT INTO tag_groups VALUES ('11', 'NSFW（WeiLin专属）', 'rgba(255, 123, 2, .4)', '1736580449');
 
-CREATE TABLE sqlite_sequence(name,seq);
-INSERT INTO sqlite_sequence VALUES ('tag_groups', '11');
-INSERT INTO sqlite_sequence VALUES ('tag_subgroups', '134');
-INSERT INTO sqlite_sequence VALUES ('tag_tags', '4086');
 
 
 /*
@@ -32,14 +28,14 @@ INSERT INTO sqlite_sequence VALUES ('tag_tags', '4086');
  参数说明：
  group_id 是tag_groups表的id_index字段
 */
-CREATE TABLE tag_subgroups (
-                id_index INTEGER PRIMARY KEY AUTOINCREMENT,
-                group_id INTEGER,
-                name TEXT,
-                color TEXT,
-                create_time INTEGER,
-                FOREIGN KEY (group_id) REFERENCES tag_groups (id_index)
-            );
+-- CREATE TABLE tag_subgroups (
+--                 id_index INTEGER PRIMARY KEY AUTOINCREMENT,
+--                 group_id INTEGER,
+--                 name TEXT,
+--                 color TEXT,
+--                 create_time INTEGER,
+--                 FOREIGN KEY (group_id) REFERENCES tag_groups (id_index)
+--             );
 INSERT INTO tag_subgroups VALUES ('1', '1', '对象', 'rgba(255, 123, 2, .4)', '1736580436');
 INSERT INTO tag_subgroups VALUES ('2', '1', '身份', 'rgba(255, 123, 2, .4)', '1736580436');
 INSERT INTO tag_subgroups VALUES ('3', '1', '二次元角色', 'rgba(255, 123, 2, .4)', '1736580436');
@@ -181,15 +177,15 @@ INSERT INTO tag_subgroups VALUES ('134', '12', 'R18词', 'rgba(255, 123, 2, .4)'
  参数说明：
  subgroup_id 是tag_subgroups表中的id_index
 */
-CREATE TABLE tag_tags (
-                id_index INTEGER PRIMARY KEY AUTOINCREMENT,
-                subgroup_id INTEGER,
-                text TEXT,
-                desc TEXT,
-                color TEXT,
-                create_time INTEGER,
-                FOREIGN KEY (subgroup_id) REFERENCES tag_subgroups (id_index)
-            );
+-- CREATE TABLE tag_tags (
+--                 id_index INTEGER PRIMARY KEY AUTOINCREMENT,
+--                 subgroup_id INTEGER,
+--                 text TEXT,
+--                 desc TEXT,
+--                 color TEXT,
+--                 create_time INTEGER,
+--                 FOREIGN KEY (subgroup_id) REFERENCES tag_subgroups (id_index)
+--             );
 INSERT INTO tag_tags VALUES ('1', '1', '1girl', '1女孩', 'rgba(255, 123, 2, .4)', '1736580436');
 INSERT INTO tag_tags VALUES ('2', '1', '1boy', '1男孩', 'rgba(255, 123, 2, .4)', '1736580436');
 INSERT INTO tag_tags VALUES ('3', '1', '2girls', '2女孩', 'rgba(255, 123, 2, .4)', '1736580436');
@@ -4276,9 +4272,4 @@ INSERT INTO tag_tags VALUES ('4083', '137', 'uncensored', '未审核的/无码',
 INSERT INTO tag_tags VALUES ('4084', '137', 'asian', '亚洲', 'rgba(255, 123, 2, .4)', '1736580450');
 INSERT INTO tag_tags VALUES ('4085', '137', 'faceless_male', '无脸男', 'rgba(255, 123, 2, .4)', '1736580450');
 INSERT INTO tag_tags VALUES ('4086', '137', 'blood', '血', 'rgba(255, 123, 2, .4)', '1736580450');
-
-CREATE TABLE schema_version (
-                version INTEGER PRIMARY KEY
-            );
-INSERT INTO schema_version VALUES ('1');
 
